@@ -1,0 +1,356 @@
+<!-- Credits to Youyou Zhou for the clean template on which I built this script! -->
+<!doctype html>
+<html>
+  <head>
+
+    <!-- Setting up basic elements, title and logo -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>&#x1F3B6 Inside Marjorie Eliot's 'Little Carnegie Hall' &#x1F3B6</title>
+
+    <!-- 
+      CSS STYLESHEETS:
+      base.css is basic stuff
+      custom.css is the one with the style for this specific project
+      custom.css needs to go after base.css
+    -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- D3 SCRIPT -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <!-- JS SCRIPT -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- GSAP SCRIPT -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- SCROLLAMA SCRIPT -->
+    <script src="https://unpkg.com/scrollama"></script>
+    	<script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/3.0.4/scrollama.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+
+  </head>
+
+
+
+<body>
+
+<!-- FIXED HEADER -->
+<header>
+    <span id="music-emoji"><img src="img/music-note.png" height="24"></span>
+    <h1 id="wave-header">
+        <span>J</span><span>A</span><span>Z</span><span>Z</span>
+        <span> </span>
+        <span>L</span><span>I</span><span>V</span><span>E</span><span>S</span>
+        <span> </span>
+        <span>I</span><span>N</span>
+        <span> </span>
+        <span>H</span><span>A</span><span>R</span><span>L</span><span>E</span><span>M</span>
+    </h1>
+    <span id="music-emoji"><img src="img/music-note.png" height="24"></span>
+</header>
+
+<!-- INTRODUCTION: Interactive video -->
+    <div class="video-container">
+        <video id="video" autoplay playsinline>
+            <source src="vid/header.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <picture id="end-image">
+            <source srcset="img/header.png" type="image/png">
+            <img src="img/header.png" alt="End screen image">
+        </picture>
+        
+        <div id="audio-button-container">
+            <svg width="60" height="60" viewBox="0 0 60 60">
+                <circle id="progress-circle" cx="30" cy="30" r="18"/>
+                <circle id="progress-fill" cx="30" cy="30" r="18" transform="rotate(-90 30 30)"/>
+                <!-- AUDIO OFF ICON -->
+                <g id="audio-off-icon" style="display:none;" transform="translate(16,16) scale(1.7)">
+                    <polygon points="1.75 5.75 1.75 10.25 4.25 10.25 8.25 13.25 8.25 2.75 4.25 5.75" stroke="#F9CDC3" fill="#F9CDC3" stroke-width="1.5"/>
+                    <path d="m14.25 5.75-3.5 4.5m0-4.5 3.5 4.5" stroke="#F9CDC3" fill="none" stroke-width="1.5"/>
+                </g>
+                <!-- AUDIO ON ICON -->
+                <g id="audio-on-icon" style="display:none;" transform="translate(16,16) scale(1.7)">
+                    <polygon points="1.75 5.75,1.75 10.25,4.25 10.25,8.25 13.25,8.25 2.75,4.25 5.75" stroke="#F9CDC3" fill="#F9CDC3" stroke-width="1.5"/>
+                    <path d="m10.75 6.25s1 .5 1 1.75-1 1.75-1 1.75m1-6.5c2 1 3 2.5 3 4.75s-1 3.75-3 4.75" stroke="#F9CDC3" fill="none" stroke-width="1.5"/>
+                </g>
+            </svg>
+        </div>
+
+        <div id="play-button-container">
+            <svg width="60" height="60" viewBox="0 0 60 60">
+                <circle id="play-progress-circle" cx="30" cy="30" r="18"/>
+                <!-- PLAY ICON (triangle) -->
+                <g id="play-icon" style="display:block;" transform="translate(30,30)">
+                    <polygon points="-6,-8 -6,8 8,0" stroke="#F9CDC3" fill="#F9CDC3" stroke-width="1.5"/>
+                </g>
+                <!-- PAUSE ICON (two vertical lines) -->
+                <g id="pause-icon" style="display:none;" transform="translate(30,30)">
+                    <rect x="-6" y="-8" width="3" height="16" stroke="#F9CDC3" fill="#F9CDC3" stroke-width="1.5"/>
+                    <rect x="3" y="-8" width="3" height="16" stroke="#F9CDC3" fill="#F9CDC3" stroke-width="1.5"/>
+                </g>
+            </svg>
+        </div>
+        <div id="title-container">
+            Inside Marjorie Eliot's 'Little Carnegie Hall'
+        </div>
+    </div>
+
+
+
+<!-- STORY (part 1) -->
+    <div class="content">
+        <!-- BY LINE AND DATE -->
+        <p class="by-line"><em>By Ana Carolina Moreno</em></p>
+        <p class="date">August 6, 2025</p>
+
+
+        <p>An 88 year old pianist, playwright, vocalist and actress has been opening her house in Harlem for free jazz sessions every Sunday for 33 years.</p>
+
+        <p>When it all started, in August 1993, it was a coping mechanism for Marjorie Eliot, the Georgia born musician, playwriter, wife and mother of four. Sundays had been especially hard for the past year. Her son Philip had passed away on August 23rd, 1992 due to kidney complications. It was a Sunday. He was only 32.</p>
+
+        <p>One year later, Marjorie put together a music concert to mark her son's passing at a museum nearby. Having people around to share some music helped. So she decided to do it again, this time in the living room of her apartment.</p>
+
+        <p>That's how Parlor Entertainment came to life.</p>
+    </div>
+
+
+<!-- SCROLLYTELLING: Map of Manhattan Jazz Clubs -->
+    <div id="scrolly-container">
+        <div id="image-container"></div>
+        <div id="text-container"></div>
+    </div>
+
+<!-- STORY (part 2) -->
+
+    <div class="side-by-side-container">
+        <div class="text-column">
+            <p>On concert days, tourists and locals alike flock the address, call the 107 buzzer and stride through the majestic entrance hall of the 1916 building.</p>
+            
+            <p>Marjorie lives on the third floor, which she fills with music just like it used to be during the Harlem Renaissance.</p>
+
+            <p>The door remains open and she doesn't charge anyone to step inside. Once you do, you become part of her family.</p>
+                
+            <p>Although tickets are free, she pays the musicians and offers beverages and snacks to the audience, paying for them with money from donations and her own pocket.</p>
+        </div>
+        <div class="video-column">
+            <video controls>
+                <source src="vid/arrival_720.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <div class="content">
+        <p>"I would not let them not be paid", she says. A show is a show, and this one, as homey as it may be, is no different than Carnegie Hall. The suggested donation is 10 dollars per person, and a bucket is usually passed around the room during the concert. She also takes Venmo and Zelle payments, and the Jazz Foundation has set up <a target="_blank" href="https://jazzfoundation.org/parlor/">a page for tax-deductable contributions</a>.</p>
+        
+        <p>Still, she says she needs to be "smart" with her spendings, making sure donations are invested in the next concert.</p>
+
+        <p>Not a lot has changed since she started with the concerts. As the years wore on, she replaced the full cooked meal she prepared herself with snacks for the audience, and some new musicians joined as regulars on Sundays.</p>
+
+        <p>One of them is Nick Mauro, a trumpeter and music teacher who met Marjorie around ten years ago, when she went to speak to his class of students. The two have played together so many times he's able to detected on the first notes which song she's playing next, so he can tag along.</p>
+    
+    </div>
+    
+    <div class="full-width-image">
+        <section class="img-section">
+        <img src="img/nick_marjorie.webp" alt="Marjorie and Nick Mauro">
+        </section>
+    </div>
+
+    <div class="content">
+            
+        <p>For Marjorie, producing the concert isn't any different than writing and putting on plays when she was a child back in Georgia, getting her friends to play the parts she wrote. "I would get the older girls and they would recruit the boys. I would produce, have food for them", she tells me after one of her concerts. It's just the two of us now, surrounded by the memories taped to the white walls.</p>
+
+        <p>Clippings of old newspapers tell her story in English and French next to drawings made by children, plaques from awards she has received along her career, a list of the plays she's written and dozens of pictures of her sons and family friends.</p>
+
+        <p>They tell the story of a long life dedicated to the arts and her community:</p>
+    </div>
+
+<!-- TIMELINE -->
+<div id="g-timeline-box" 
+    class="ai2html" 
+    justify-content="center" 
+    max-width="800px">
+	<!-- Artboard: Artboard_1 -->
+	<div id="g-timeline-Artboard_1" class="g-artboard" style="" data-aspect-ratio="0.8" data-min-width="0">
+		<div style="padding: 0 0 125% 0;"></div>
+		<img id="g-timeline-Artboard_1-img" class="g-timeline-Artboard_1-img g-aiImg" alt="" loading="lazy" src="img/timeline-Artboard_1.png"/>
+		<div id="g-ai0-1" class="g-years g-aiAbs g-aiPointText" style="top:2.7006%;margin-top:-6.6px;left:1.4459%;width:44px;">
+			<p class="g-pstyle0">1930</p>
+		</div>
+		<div id="g-ai0-2" class="g-text g-aiAbs g-aiPointText" style="top:9.2158%;margin-top:-7.7px;left:16.3281%;width:310px;">
+			<p class="g-pstyle1">1937 - Marjorie Eliot is born in Georgia on April 18th</p>
+		</div>
+		<div id="g-ai0-3" class="g-years g-aiAbs g-aiPointText" style="top:12.2006%;margin-top:-6.6px;left:1.4459%;width:44px;">
+			<p class="g-pstyle0">1940</p>
+		</div>
+		<div id="g-ai0-4" class="g-text g-aiAbs g-aiPointText" style="top:12.7158%;margin-top:-7.7px;left:16.3281%;width:163px;">
+			<p class="g-pstyle1">1940 - First piano lessons</p>
+		</div>
+		<div id="g-ai0-5" class="g-years g-aiAbs g-aiPointText" style="top:21.7006%;margin-top:-6.6px;left:1.4459%;width:44px;">
+			<p class="g-pstyle0">1950</p>
+		</div>
+		<div id="g-ai0-6" class="g-text g-aiAbs g-aiPointText" style="top:23.8408%;margin-top:-7.7px;left:16.3281%;width:425px;">
+			<p class="g-pstyle1">1953 - After finishing school in Philadelphia, she moves to New York City</p>
+		</div>
+		<div id="g-ai0-7" class="g-text g-aiAbs g-aiPointText" style="top:27.7158%;margin-top:-7.7px;left:16.3281%;width:192px;">
+			<p class="g-pstyle1">1959 - Her son Michael is born</p>
+		</div>
+		<div id="g-ai0-8" class="g-years g-aiAbs g-aiPointText" style="top:31.2006%;margin-top:-6.6px;left:1.4459%;width:44px;">
+			<p class="g-pstyle0">1960</p>
+		</div>
+		<div id="g-ai0-9" class="g-text g-aiAbs g-aiPointText" style="top:31.3408%;margin-top:-7.7px;left:16.3281%;width:180px;">
+			<p class="g-pstyle1">1960 - Her son Philip is born</p>
+		</div>
+		<div id="g-ai0-10" class="g-text g-aiAbs g-aiPointText" style="top:34.9658%;margin-top:-7.7px;left:16.3281%;width:181px;">
+			<p class="g-pstyle1">1964 - Her son Alfred is born</p>
+		</div>
+		<div id="g-ai0-11" class="g-text g-aiAbs g-aiPointText" style="top:38.5908%;margin-top:-7.7px;left:16.3281%;width:180px;">
+			<p class="g-pstyle1">1966 - Her son Rudel is born</p>
+		</div>
+		<div id="g-ai0-12" class="g-years g-aiAbs g-aiPointText" style="top:40.7006%;margin-top:-6.6px;left:1.4459%;width:43px;">
+			<p class="g-pstyle0">1970</p>
+		</div>
+		<div id="g-ai0-13" class="g-text g-aiAbs g-aiPointText" style="top:42.4658%;margin-top:-7.7px;left:16.3281%;width:426px;">
+			<p class="g-pstyle1">1969 - Stars in the play "No Place to Be Somebody", by Charles Gordonne</p>
+		</div>
+		<div id="g-ai0-14" class="g-text g-aiAbs g-aiPointText" style="top:49.0908%;margin-top:-7.7px;left:16.3281%;width:181px;">
+			<p class="g-pstyle1">1979 - Her son Shaun is born</p>
+		</div>
+		<div id="g-ai0-15" class="g-years g-aiAbs g-aiPointText" style="top:50.2006%;margin-top:-6.6px;left:1.4459%;width:44px;">
+			<p class="g-pstyle0">1980</p>
+		</div>
+		<div id="g-ai0-16" class="g-text g-aiAbs g-aiPointText" style="top:52.7158%;margin-top:-7.7px;left:16.3281%;width:375px;">
+			<p class="g-pstyle1">1982 - Marjorie moves into Studio 3F at 555 Edgecombe Avenue</p>
+		</div>
+		<div id="g-ai0-17" class="g-text g-aiAbs g-aiPointText" style="top:58.9658%;margin-top:-7.7px;left:16.3281%;width:416px;">
+			<p class="g-pstyle1">1992 - Philip dies from kidney complications on August 23rd (a Sunday)</p>
+		</div>
+		<div id="g-ai0-18" class="g-years g-aiAbs g-aiPointText" style="top:59.7006%;margin-top:-6.6px;left:1.4459%;width:44px;">
+			<p class="g-pstyle0">1990</p>
+		</div>
+		<div id="g-ai0-19" class="g-text g-aiAbs g-aiPointText" style="top:62.5908%;margin-top:-7.7px;left:16.3281%;width:544px;">
+			<p class="g-pstyle1">1993 - First Jazz-at-the-Mansion concert held at Morris-Jumel Mansion, as a tribute to his life</p>
+		</div>
+		<div id="g-ai0-20" class="g-text g-aiAbs g-aiPointText" style="top:66.2158%;margin-top:-7.7px;left:16.3281%;width:280px;">
+			<p class="g-pstyle1">1994 - Jazz-at-the-Parlor begins every Sunday</p>
+		</div>
+		<div id="g-ai0-21" class="g-years g-aiAbs g-aiPointText" style="top:69.2006%;margin-top:-6.6px;left:1.4459%;width:46px;">
+			<p class="g-pstyle0">2000</p>
+		</div>
+		<div id="g-ai0-22" class="g-text g-aiAbs g-aiPointText" style="top:69.8408%;margin-top:-7.7px;left:16.3281%;width:489px;">
+			<p class="g-pstyle1">2000 - Inducted to the People&rsquo;s Hall of Fame at the Museum of the City of New York</p>
+		</div>
+		<div id="g-ai0-23" class="g-text g-aiAbs g-aiPointText" style="top:73.5908%;margin-top:-7.7px;left:16.3281%;width:291px;">
+			<p class="g-pstyle1">2003 - Received the Outstanding Pioneer Award</p>
+		</div>
+		<div id="g-ai0-24" class="g-text g-aiAbs g-aiPointText" style="top:77.9658%;margin-top:-7.7px;left:16.3281%;width:307px;">
+			<p class="g-pstyle1">2009 - Honored with the Uptown Arts Stroll Award</p>
+		</div>
+		<div id="g-ai0-25" class="g-years g-aiAbs g-aiPointText" style="top:78.7006%;margin-top:-6.6px;left:1.4459%;width:44px;">
+			<p class="g-pstyle0">2010</p>
+		</div>
+		<div id="g-ai0-26" class="g-text g-aiAbs g-aiPointText" style="top:88.2158%;margin-top:-7.7px;left:16.3281%;width:306px;">
+			<p class="g-pstyle1">2020 - First live streamings of the Sunday concerts</p>
+		</div>
+		<div id="g-ai0-27" class="g-years g-aiAbs g-aiPointText" style="top:88.2006%;margin-top:-6.6px;left:1.4459%;width:45px;">
+			<p class="g-pstyle0">2020</p>
+		</div>
+		<div id="g-ai0-28" class="g-text g-aiAbs g-aiPointText" style="top:91.8408%;margin-top:-7.7px;left:16.3281%;width:309px;">
+			<p class="g-pstyle1">2024 - Concerts start also on Fridays and Saturdays</p>
+		</div>
+		<div id="g-ai0-29" class="g-text g-aiAbs g-aiPointText" style="top:95.4658%;margin-top:-7.7px;left:16.3281%;width:430px;">
+			<p class="g-pstyle1">2025 - Marjorie plans to produce music and monologue acts at her house</p>
+		</div>
+		<div id="g-ai0-30" class="g-years g-aiAbs g-aiPointText" style="top:97.7006%;margin-top:-6.6px;left:1.4459%;width:46px;">
+			<p class="g-pstyle0">2030</p>
+		</div>
+	</div>
+</div>
+</div>
+
+<!-- STORY (part 3) -->
+    <div class="content">
+        <p>It's the first Saturday of August 2025 and the memories are especially important: this month is the 33rd anniversary of Phillip's death, which means her tributes have outlived his short life alongside his mother.</p>
+
+        <p>She tries not to think about the losses she's endured since 1992. Nowadays, Rudel is her only surviving son. A musician and performer just like his mother, he takes turns with her on the piano and leads the crowd on the gospel "This Little Light of Mine".</p>
+
+        <p>When the concert comes to a close, Marjorie stands up slowly and walks to the center of her parlor before giving her "new family members" a few words about how she's feeling that day. "You give me a kind of license to go where it takes me", she explains after a piano solo that ran especially long. She said she was thinking of two colleagues from the New York theatre scene who recently passed aways.</p>
+
+        <p>Most of the audience is aware that her jazz sessions flourished out of grief, and they are more than happy to listen. "It doesn't matter what I do next, I know you will catch me", she says, making it clear that she hasn't allow fate to write her story.</p>
+
+        <p>"My story started as a sad story. But it's not sad anymore."</p>
+
+        <p>If you're in New York and want to see a concert, just show up on Fridays before 4pm, Saturdays before 3pm and Sundays before 3:30.</p>
+        
+        <p>If you're not in the city, here's 1 minute inside Marjorie's Parlor: </p>
+    </div>
+
+    <div class="parlor-video-column">
+        <video controls>
+            <source src="vid/parlor.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+
+<!-- FOOTER -->
+<div class="footer-container">
+    <section class="methodology">
+        <h1>Methodology</h1>
+        
+        <p text-align='center'>(read full methodology and code on <a target="_blank" href="https://github.com/anacarolinamoreno/jazz">Github)</a></p>
+
+        <p>This project was developed for the 2025 Lede Data Journalism Program.</p>
+
+        <p>After two projects focusing more on data analysis, I decided to dedicate some time to polish website interactivity and design. That meant a lot of JavaScript.</p>
+
+        <p>I chose <strong>Marjorie Eliot's jazz concerts</strong> as the theme because I was touched by her story. Although there have been several news stories and documentaries about her, I believe the timing of the 33rd anniversary of her tribute deserved a multimedia page.</p>
+
+        <p>Here is how each section was made:</p>
+        
+        <ul>
+            <li><strong>Data Collection:</strong></li>
+            The data I used was a list of jazz clubs addresses in Manhattan. I found two websites with this information, but their HTML was too out of date, which would require too much time to clean. I fixed this by copying the text and having an <strong>LLM</strong> turn it into lists, which I pasted in an <strong>RStudio</strong> script and turned into a dataframe.
+            <br><br>
+            After that, I used the <strong>tidygeocoder package</strong> to get the latitude and longitude of each address, and the <strong>sf package</strong> to get a geometry column.
+            <br><br>
+            <li><strong>Mapping:</strong></li>
+            I used a mix of <strong>QGIS, Mapbox and Adobe Illustrator</strong> to create the map with the points for each jazz club. The satellite image is from the <a target="_blank" href="https://www.esa.int/ESA_Multimedia/Images/2021/08/The_Big_Apple_New_York_City">European Space Agency</a>. 
+            <br><br>
+            <li><strong>Animation:</strong></li>
+            The animated text in the header was made using Javascript</strong>.
+            <br><br>
+            <li><strong>Interaction:</strong></li>
+            I designed two buttons with <strong>SVG</strong>, one for turning the audio on and off, and the other for pausing or playing the video. And I used <strong>JavaScript</strong> to animated these buttons on click, to allow for user interactivity while keeping an exclusive design for the page.
+            <br><br>
+            <li><strong>Timeline:</strong></li>
+            The timeline was designed using <a target="_blank" href="https://github.com/kristw/d3kit-timeline">d3kit-timeline</a>. The code is available on <a target="_blank" href="https://observablehq.com/d/7029f1df9cc76fe6">Observable</a>. I downloaded the SVG and used Adobe Illustrator to finish styling and save it as <strong>ai2html</strong>.
+        </ul>
+
+    </section>
+</div>
+
+<!-- SCRIPTS START HERE IN THIS ORDER:
+ 1- Music note animation on the header -->
+
+   <script src="js/script01_header-animation.js"></script>
+
+ <!-- 2- SVG animations to turn audio on and off, and to play and pause videos -->
+
+   <script src="js/script02_video-buttons.js"></script>
+
+ <!-- 3- Scrollytelling: Manhattan Jazz Clubs Map -->
+
+   <script src="js/script03_scrolly-map.js"></script>
+
+<!-- 4- Animated video -->
+
+<script src="js/script04_parlor-video-animation.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,652 @@
+/* add your custom css here */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    /* overflow: hidden; */
+    background: #F9CDC3;
+    font-family: Lora, serif;
+    padding-top: 40px; /* To account for fixed header */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #472a6a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+h1 {
+    margin: 0;
+    font-size: 20px;
+    color: #fff;
+}
+
+h2 {
+    margin: 0;
+    padding: 5%;
+    font-size: clamp(1rem, 4vw, 2.5rem);
+    color: #472a6a;
+    background-color: #d9cff1;
+}
+
+h3 {
+    margin: 0;
+    padding: 1%;
+    font-size: clamp(1rem, 4vw, 2.5rem);
+    text-shadow: 0 2px 8px #fff; /* optional: makes text readable over video */
+    color: #472a6a;
+    left: 0;
+    width: 640px;
+    text-align: center;
+    pointer-events: none; /* so it doesn't block button clicks */
+    font-family: Lora, serif;
+}
+
+p {
+    margin: 0;
+    width: 100%;
+    font-size: 16px;
+    color: #333;
+    font-family: Lora, serif;
+}
+
+a {
+    margin: 0;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #472a6a;
+    font-family: Lora, serif;
+}
+
+.by-line {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 1em;
+    margin-bottom: 0;
+    padding: 0;
+    max-width: 640px;
+    color: #515151;
+    text-align: center;
+}
+
+.date {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 0.8em;
+    margin-bottom: 1em;
+    padding: 0;
+    max-width: 640px;
+    color: #515151;
+    text-align: center;
+}
+
+.story-paragraph {
+    margin: 0;
+    width: 100%;
+    font-size: 16px;
+    color: #333;
+    font-family: Lora, serif;
+}
+
+.scrolly-paragraph {
+    margin: 0;
+    width: 100%;
+    font-size: 16px;
+    color: #fff;
+    font-family: Lora, serif;
+}
+
+.content {
+    padding: 20px;
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* FIXED HEADER */
+
+#music-emoji {
+  margin: 0 16px;
+}
+
+/* VIDEO HEADER */
+
+        .video-container {
+            position: relative;
+            width: 800px;
+            height: 450px;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            /* max-width: 100vw; */
+            height: 56.25vw; /* 16:9 aspect ratio (height = width * 9/16) */
+            max-height: 100vw;
+            /* max-width: 177.78vh; Prevent exceeding screen height */
+            margin: 0;
+        }
+        
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        #end-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* Hidden by default */
+        }
+
+        #end-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* AUDIO ON AND OFF BUTTON */
+        
+        #audio-button-container {
+            position: absolute;
+            top: 10pt;
+            left: 10pt;
+            /* transform: translate(-50%, -50%); */
+            cursor: pointer;
+            pointer-events: auto;
+            width: 60px;
+            height: 60px;
+            z-index: 10;
+        }
+
+        #audio-on-icon,
+        #audio-off-icon,
+        #audio-on-icon *,
+        #audio-off-icon * {
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        #progress-circle {
+            fill: none;
+            stroke: #F9CDC3;
+            stroke-width: 4;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+        
+        #progress-fill {
+            fill: none;
+            stroke: #8369bd;
+            stroke-width: 4;
+            stroke-dasharray: 113.1; /* 2π × 18 */
+            stroke-dashoffset: 113.1;
+            transition: stroke-dashoffset 0.1s linear;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+        
+        #audio-button-container:hover #progress-circle,
+        #audio-button-container:hover #play-icon {
+            opacity: 0.8;
+        }
+
+        /* PLAY/PAUSE BUTTON */
+        
+        #play-button-container {
+            position: absolute;
+            top: 50pt;
+            left: 10pt;
+            cursor: pointer;
+            pointer-events: auto;
+            width: 60px;
+            height: 60px;
+            z-index: 10;
+        }
+
+        #play-icon,
+        #pause-icon,
+        #play-icon *,
+        #pause-icon * {
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        #play-progress-circle {
+            fill: none;
+            stroke: #F9CDC3;
+            stroke-width: 4;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+        
+        #play-button-container:hover #play-progress-circle,
+        #play-button-container:hover #play-icon,
+        #play-button-container:hover #pause-icon,
+        #play-button-container:hover #pause-icon {
+            opacity: 0.8;
+        }
+
+        /* TITLE OVER VIDEO */
+        #title-container {
+            position: absolute;
+            bottom: 2%; /* adjust as needed */
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: clamp(1rem, 4vw, 2.5rem);
+            text-shadow: 0 2px 8px #000; /* optional: makes text readable over video */
+            color: #F9CDC3;
+            z-index: 2;
+            pointer-events: none; /* so it doesn't block button clicks */
+            font-family: Lora, serif;
+        }
+
+        /* END IMAGE */
+        
+        #end-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* Hidden by default */
+        }
+
+        #end-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+/* SCROLLYTELLING STYLE */
+
+        #scrolly-container {
+            display: flex;
+            width: 100%;
+            /* max-width: 800px; */
+            margin: 0 auto;
+            position: relative;
+            background: #472a6a;
+            color: #fff;
+        }
+
+        /* Image container - sticky on left */
+        #image-container {
+            position: sticky;
+            top: 0;
+            width: 50%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #472a6a;
+            overflow: hidden;
+        }
+
+        #image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            position: absolute;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #image-container img.active {
+            opacity: 1;
+        }
+
+        /* Text container - scrollable on right */
+        #text-container {
+            width: 50%;
+            color: #fff;
+        }
+
+        .step {
+            min-height: 100vh;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-sizing: border-box;
+            color: #fff;
+        }
+
+        .step-content p {
+            color: #fff;
+            font-size: 18px;
+        }   
+
+        .step-content {
+            padding: 30px;
+            border-radius: 4px;
+            color: #fff;
+            /* box-shadow: 0 4px 12px rgba(0,0,0,0.1); */
+        }
+
+        .chapters {
+            color: #fff
+        }
+
+        /* Mobile view */
+        @media (max-width: 768px) {
+            #scrolly-container {
+                flex-direction: column;
+                height: auto;
+            }
+
+            #image-container {
+                position: sticky;
+                top: 0;
+                width: 100%;
+                height: 50vh;
+                z-index: 2;
+            }
+
+            #text-container {
+                width: 100%;
+                position: relative;
+                z-index: 1;
+            }
+
+            .step {
+                min-height: 50vh;
+                padding: 20px;
+            }
+
+            #image-container img {
+                object-fit: contain;
+            }
+
+            
+        }
+
+/* TEXT AND VIDEO SIDE BY SIDE */
+
+         .side-by-side-container {
+            max-width: 640px;
+            padding: 20px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+            align-items: center; /* Remove gap between columns */
+        }
+
+        .text-column {
+            width: 320px;
+            padding: 20px;
+            left: 0;
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        .video-column {
+            width: 320px;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .video-column video {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 720/1080; 
+            object-fit: cover; 
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 680px) {
+            .container {
+                flex-direction: column;
+                width: 100%;
+                align-items: flex-start; /* Reset alignment for mobile */
+            }
+            .text-column,
+            .video-column {
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            .text-column {
+                order: 1;
+                padding: 20px; /* Consistent padding */
+            }
+            .video-column {
+                order: 2;
+                padding: 0 20px 20px 20px; /* Padding only on sides and bottom */
+            }
+            /* Keep original vertical aspect ratio for mobile */
+            .video-column video {
+                aspect-ratio: 720/1080;
+            }
+        }
+
+/* FULL IMAGE */
+
+/* Main image container - responsive and centered */
+.img-section {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Optional: for vertical centering if needed */
+}
+
+/* Image styling */
+#full-width-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%; /* Ensures it doesn't exceed container */
+    display: block; /* Changed from flex to block for better image control */
+}
+
+/* Tablet responsiveness */
+@media (max-width: 640px) {
+    .img-section {
+        padding: 20px 15px; /* Slightly reduced padding */
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+    .img-section {
+        padding: 15px 10px; /* Even smaller padding on mobile */
+    }
+    
+    #full-width-image {
+        width: 100%; /* Full width on small screens */
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 320px) {
+    .img-section {
+        padding: 10px; /* Minimal padding on very small screens */
+    }
+}
+
+/* FULL VIDEO */
+
+.parlor-video-column {
+    width: 100%;
+    max-width: 640px; /* Maximum width on larger screens */
+    margin: 0 auto; /* Centers the container horizontally */
+    padding: 0 20px; /* Adds some breathing room on mobile */
+    box-sizing: border-box; /* Includes padding in width calculation */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Vertically centers content if needed */
+}
+
+.parlor-video-column video {
+    width: 100%;
+    height: auto;
+    max-height: 360px; /* Maintains 16:9 aspect ratio for 640px width */
+    object-fit: contain; /* Changed from cover to contain to show full video */
+    display: block;
+}
+
+/* Optional: Adjust aspect ratio for different screen sizes */
+@media (max-width: 768px) {
+    .parlor-video-column {
+        max-width: 100%; /* Takes full width on smaller screens */
+        padding: 0 15px; /* Smaller padding on mobile */
+    }
+    
+    .parlor-video-column video {
+        max-height: 56.25vw; /* 16:9 aspect ratio based on viewport width */
+    }
+}
+
+/* For very small mobile devices */
+@media (max-width: 480px) {
+    .parlor-video-column {
+        padding: 0 10px;
+    }
+}
+
+/* TIMELINE STYLE - D3+AI2HTML */
+
+/* Extra code to keep the timeline centered */
+.timeline-wrapper {
+    display: flex;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: transparent;
+}
+
+/* Rest of the CSS code for the timeline */
+#g-timeline-box,
+#g-timeline-box .g-artboard {
+	margin:0 auto;
+    max-width: 800px;
+    position: relative;;
+}
+#g-timeline-box p {
+	margin:0;
+}
+#g-timeline-box .g-aiAbs {
+	position:absolute;
+}
+#g-timeline-box .g-aiImg {
+	position:absolute;
+	top:0;
+	display:block;
+	width:100% !important;
+}
+#g-timeline-box .g-aiSymbol {
+	position:absolute;
+	box-sizing:border-box;
+}
+#g-timeline-box .g-aiPointText p {
+	white-space:nowrap;
+}
+#g-timeline-Artboard_1 {
+	position:relative;
+	overflow:hidden;
+}
+#g-timeline-Artboard_1 p {
+	font-weight:regular;
+	line-height:14px;
+	height:auto;
+	opacity:1;
+	letter-spacing:0em;
+	font-size:12px;
+	text-align:left;
+	color:rgb(255,255,255);
+	text-transform:none;
+	padding-bottom:0;
+	padding-top:0;
+	mix-blend-mode:normal;
+	font-style:normal;
+	position:static;
+}
+#g-timeline-Artboard_1 .g-pstyle0 {
+	font-weight:700;
+	line-height:12px;
+	height:12px;
+	font-size:10px;
+	color:rgb(71,42,106);
+}
+#g-timeline-Artboard_1 .g-pstyle1 {
+	font-weight:500;
+	height:14px;
+}
+
+
+
+/* FOOTER */
+    .footer-container {
+      padding: 0;
+      background: #fae8e4;
+      text-align: left;
+    }
+
+    .methodology {
+        max-width: 640px;
+        margin: 0;
+        margin: auto;
+        padding: 30px;
+        /* border: 1px solid #c1adeb; 
+        border-radius: 0; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);  */
+        font-family: 'Lora', Georgia, serif;
+        line-height: 1.6;
+        color: #31285f;
+    }
+        
+    .methodology a {
+        color: #472a6a;
+        text-decoration: underline;
+    }
+
+     .methodology h1 {
+        color: #472a6a;
+        border-bottom: 1px solid #472a6a;
+        padding-bottom: 10px;
+        margin-top: 0;
+        font-size: 1.8em;
+        text-align: center;
+    }
+        
+    .methodology ul {
+        padding-left: 5px;
+    }
+        
+    .methodology li {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+        
+    @media (max-width: 700px) {
+        .methodology {
+            margin: 20px 10px;
+            padding: 20px;
+        }
+    }
