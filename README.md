@@ -11,7 +11,7 @@ Here is how each section was made:
 - **Data Collection:**  
   The data I used was a list of jazz clubs addresses in Manhattan. I found two websites with this information, but their HTML was too out of date, which would require too much time to clean. I fixed this by copying the text and having an **LLM** turn it into lists, which I pasted in an **RStudio** script and turned into a dataframe.
   
-  After that, I used the **tidygeocoder package** to get the latitude and longitude of each address, and the **sf package** to get a geometry column.
+  After that, I used the **tidygeocoder package** to get the latitude and longitude of each address, and the **sf package** to get a geometry column. [Here are the script and files](https://github.com/anacarolinamoreno/jazz/tree/main/nyc_jazz_clubs_geolocation).
 
 - **Mapping:**  
   I used a mix of **QGIS, Mapbox and Adobe Illustrator** to create the map with the points for each jazz club. The satellite image is from the [European Space Agency](https://www.esa.int/ESA_Multimedia/Images/2021/08/The_Big_Apple_New_York_City).
