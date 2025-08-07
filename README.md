@@ -1,4 +1,5 @@
 # Marjorie Eliot's "Little Carnegie Hall"
+_The coziest jazz club in New York City_
 
 This project was developed for the 2025 Lede Data Journalism Program.
 
